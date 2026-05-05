@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-50 text-slate-800 antialiased font-sans;
+}
+
+/* Rubik's Cube CSS Animation */
+.cube-container {
+  perspective: 1000px;
+}
+
+.cube {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: dynamicCubeRotate 24s infinite cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.cube-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2px;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.cube-face > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+}
+
+@keyframes dynamicCubeRotate {
+  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  10% { transform: rotateX(90deg) rotateY(45deg) rotateZ(0deg); }
+  20% { transform: rotateX(90deg) rotateY(135deg) rotateZ(90deg); }
+  35% { transform: rotateX(180deg) rotateY(135deg) rotateZ(90deg); }
+  45% { transform: rotateX(270deg) rotateY(225deg) rotateZ(180deg); }
+  60% { transform: rotateX(270deg) rotateY(315deg) rotateZ(270deg); }
+  75% { transform: rotateX(360deg) rotateY(315deg) rotateZ(270deg); }
+  85% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}
